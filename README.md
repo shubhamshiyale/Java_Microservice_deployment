@@ -1,3 +1,7 @@
+Here’s the updated README with today's steps added at the bottom:
+
+---
+
 # Java Microservices Deployment - Local to GKE (DevOps Practice)
 
 ## 📅 Day 1 - April 7, 2025
@@ -95,9 +99,43 @@ This is the first of the two microservices we will build. The second microservic
 
 ---
 
-> ⏰ Daily DevOps Practice Time: 1–2 hours
-> 👨‍💻 DevOps Experience: 6+ years (hands-on guided learning approach)
-> 📌 Remind every day of the goal and continue step-by-step
+## 📅 Day 2 - April 8, 2025
 
-Let's continue tomorrow 🚀
+### ✅ OrderService Setup:
 
+- Created and tested the **OrderService** microservice.
+- This service handles order data and accepts order details via a `POST` API at `http://localhost:8081/orders`.
+
+  Example for placing an order:
+  
+  ```bash
+  # POST - Place order
+  $ curl -X POST http://localhost:8081/orders \
+    -H "Content-Type: application/json" \
+    -d '{"id": "101", "userId": "u123", "product": "Laptop", "quantity": 1}'
+  
+  # Response: "Order placed successfully!"
+  ```
+
+  The `OrderService` simulates placing an order and returns a success message.
+
+### ✅ OrderService API Testing:
+
+```bash
+# POST - Create order
+$ curl -X POST http://localhost:8081/orders \
+  -H "Content-Type: application/json" \
+  -d '{"id": "101", "userId": "u123", "product": "Laptop", "quantity": 1}'
+
+# GET - List orders
+$ curl http://localhost:8081/orders
+```
+
+### ✅ Service Integration:
+
+- Integrated **UserService** and **OrderService**.
+- Both services are working independently, with **UserService** on port `8080` and **OrderService** on port `8081`.
+
+---
+
+Feel free to copy the entire updated README now! Let me know if you need any further changes or adjustments.

@@ -136,6 +136,58 @@ $ curl http://localhost:8081/orders
 - Integrated **UserService** and **OrderService**.
 - Both services are working independently, with **UserService** on port `8080` and **OrderService** on port `8081`.
 
+Perfect! So now both **User Service** and **Order Service** are containerized and tested locally — that’s a huge milestone! 🥳🔥
+
+Let’s update your README with today’s accomplishments (Day 2). Here's the updated section to add:
+
 ---
 
-Feel free to copy the entire updated README now! Let me know if you need any further changes or adjustments.
+## 📅 Day 2 - April 21, 2025
+
+Today we **containerized** both the `UserService` and `OrderService` and tested them locally using Docker.
+
+### ✅ What We Did:
+
+#### 🔧 Build & Package the Services
+- Ran the Maven build:
+  ```bash
+  ./mvnw clean install
+  ```
+
+#### 🐳 Created Dockerfiles
+- Added `Dockerfile` to both services with the following structure:
+  ```dockerfile
+  FROM openjdk:17
+  ARG JAR_FILE=target/*.jar
+  COPY ${JAR_FILE} app.jar
+  ENTRYPOINT ["java", "-jar", "/app.jar"]
+  ```
+
+#### 📦 Built Docker Images
+- Built images locally:
+  ```bash
+  docker build -t userservice:v1 .
+  docker build -t orderservice:v1 .
+  ```
+
+#### 🚀 Ran Containers Locally
+- Ran the services in **detached mode**:
+  ```bash
+  docker run -d -p 8080:8080 userservice:v1
+  docker run -d -p 8081:8080 orderservice:v1
+  ```
+
+#### 📟 Tested with `curl`:
+```bash
+# UserService
+curl http://localhost:8080/users
+
+# OrderService
+curl http://localhost:8081/orders
+```
+
+✅ Both responded successfully — confirming our container setup works as expected!
+
+---
+
+Let me know if you’d like to add the Dockerfiles too or start docker-compose/GKE setup next.

@@ -180,10 +180,20 @@ Today we **containerized** both the `UserService` and `OrderService` and tested 
 #### 📟 Tested with `curl`:
 ```bash
 # UserService
-curl http://localhost:8080/users
+curl http://localhost:8080/users/ #check service is up or not
+for add user do 
+curl -X POST http://localhost:8080/users \
+    -H "Content-Type: application/json" \
+    -d '{"name": "John Doe", "email": "john.doe@example.com"}'
+
 
 # OrderService
-curl http://localhost:8081/orders
+curl http://localhost:8081/orders/ #check service is up or not
+
+for place order do
+curl -X POST http://localhost:8081/orders \
+    -H "Content-Type: application/json" \
+    -d '{"orderId": 123, "product": "Laptop", "quantity": 1}'
 ```
 
 ✅ Both responded successfully — confirming our container setup works as expected!

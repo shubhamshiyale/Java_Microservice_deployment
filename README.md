@@ -196,8 +196,19 @@ curl -X POST http://localhost:8081/orders \
     -d '{"orderId": 123, "product": "Laptop", "quantity": 1}'
 ```
 
-✅ Both responded successfully — confirming our container setup works as expected!
+## 📅 Day 3 - April 24, 2025
 
----
+push the images to the artifactory 
+1. create a seperate GCP project # in my case i used java-application-host-on-gke
+2. search for the artifacts registry and enable to api
+3. create a repository and give it a name
+4. copy the path
 
-Let me know if you’d like to add the Dockerfiles too or start docker-compose/GKE setup next.
+Tag your existing images
+docker tag userservice:v1 us-east1-docker.pkg.dev/java-application-host-on-gke/jdk-app-images/userservice:v1
+docker tag orderservice:v1 us-east1-docker.pkg.dev/java-application-host-on-gke/jdk-app-images/orderservice:v1
+
+docker push orderservice:v1 us-east1-docker.pkg.dev/java-application-host-on-gke/jdk-app-images/orderservice:v1
+docker push userservice:v1 us-east1-docker.pkg.dev/java-application-host-on-gke/jdk-app-images/userservice:v1
+
+validate if the images are pushed

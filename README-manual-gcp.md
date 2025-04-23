@@ -23,7 +23,7 @@ This document outlines the manual steps to create two separate Google Cloud Proj
 4. Subnet mode: **Custom**
 5. Add a subnet:
    - Name: `gke-subnet`
-   - Region: Choose one (e.g., `us-central1`)
+   - Region: Choose one (e.g., `us-east1`)
    - IP range: `10.10.0.0/16`
 6. Click **Create**
 
